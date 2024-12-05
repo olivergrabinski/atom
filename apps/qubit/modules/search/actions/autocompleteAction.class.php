@@ -39,7 +39,6 @@ class SearchAutocompleteAction extends sfAction
         $culture = $this->context->user->getCulture();
 
         $client = QubitSearch::getInstance()->client;
-        $index = QubitSearch::getInstance()->index->getInstance();
 
         // Multisearch object
         $mSearch = new \Elastica\Multi\Search($client);
@@ -74,9 +73,12 @@ class SearchAutocompleteAction extends sfAction
             ],
         ];
 
+        // Wrapper to access ElasticSearch indices
+        $indexWrapper = QubitSearch::getInstance()->index;
+
         foreach ($items as $item) {
             $search = new \Elastica\Search($client);
-            $search->addIndex($index)->addType($index->getType($item['type']));
+            $search->addIndex($indexWrapper->getIndex($item['type']));
 
             $query = new \Elastica\Query();
             $query->setSize(3)->setSource($item['fields']);
