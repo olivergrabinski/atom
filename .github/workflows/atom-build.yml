@@ -30,7 +30,6 @@ jobs:
       - name: Build and Push AtoM Image
         uses: docker/build-push-action@v6
         with:
-          context: ..
           push: true
           tags: olivergra/atom:latest
           platforms: linux/amd64,linux/arm64
