@@ -1,10 +1,7 @@
 name: Generate and upload SBOM
 
 on:
-  push:
-    branches:
-    - qa/**
-    - stable/**
+  workflow_dispatch:
 
 jobs:
   generate-sbom:

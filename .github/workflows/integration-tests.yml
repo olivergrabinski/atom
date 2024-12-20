@@ -1,10 +1,6 @@
 name: Integration tests
 on:
-  pull_request:
-  push:
-    branches:
-    - qa/**
-    - stable/**
+  workflow_dispatch:
 jobs:
   integration-tests:
     runs-on: ubuntu-20.04

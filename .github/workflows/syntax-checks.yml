@@ -1,10 +1,6 @@
 name: Syntax checks
 on:
-  pull_request:
-  push:
-    branches:
-    - qa/**
-    - stable/**
+  workflow_dispatch:
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-20.04
