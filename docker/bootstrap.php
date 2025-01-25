@@ -105,7 +105,7 @@ all:
   read_only: false
   htmlpurifier_enabled: false
   csp:
-    response_header: Content-Security-Policy-Report-Only
+    response_header: Content-Security-Policy
     directives: >
       default-src 'self';
       font-src 'self' https://fonts.gstatic.com;
