@@ -67,7 +67,7 @@ RUN --mount=type=secret,id=api_token,env=API_TOKEN \
 
 COPY package* /atom/build/
 
-RUN set -xe && npm install --prefix /atom/build
+RUN set -xe && npm install --omit=dev --prefix /atom/build
 
 COPY . /atom/src
 
@@ -81,7 +81,7 @@ RUN set -xe \
     && npm run build \
     && rm -rf /atom/build
 
-RUN set -xe && npm prune --production
+# RUN set -xe && npm prune --production
 
 ENTRYPOINT ["docker/entrypoint.sh"]
 
