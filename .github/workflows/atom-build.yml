@@ -35,7 +35,7 @@ jobs:
           platforms: linux/amd64
           build-args: |
             ATOM_COVERAGE=false
-          cache-from: type=registry,ref=your-dockerhub-username/atom:cache
-          cache-to: type=inline
+          # cache-from: type=registry,ref=your-dockerhub-username/atom:cache
+          # cache-to: type=inline
           secrets: |
             "api_token=${{ secrets.API_TOKEN }}"
