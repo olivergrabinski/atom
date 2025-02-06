@@ -65,7 +65,7 @@ RUN set -xe && composer install -d /atom/build
 
 COPY package* /atom/build/
 
-RUN set -xe && npm install --omit=dev --prefix /atom/build
+RUN set -xe && npm install --prefix /atom/build
 
 COPY . /atom/src
 
