@@ -79,6 +79,8 @@ RUN set -xe \
     && npm run build \
     && rm -rf /atom/build
 
+RUN set -xe && npm prune --production
+
 ENTRYPOINT ["docker/entrypoint.sh"]
 
 CMD ["fpm"]
