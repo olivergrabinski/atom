@@ -1,7 +1,4 @@
 FROM php:7.4-fpm-alpine
-RUN --mount=type=secret,id=API_TOKEN,env=API_TOKEN \
-    export API_TOKEN=$(cat /run/secrets/API_TOKEN) && \
-    echo $API_TOKEN
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
@@ -64,6 +61,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY composer.* /atom/build/
 
+RUN --mount=type=secret,id=API_TOKEN,env=API_TOKEN
 RUN set -xe && composer config -g github-oauth.github.com $API_TOKEN
 
 RUN set -xe && composer install -d /atom/build
