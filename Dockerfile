@@ -1,5 +1,5 @@
 FROM php:7.4-fpm-alpine
-RUN --mount=type=secret,id=API_TOKEN,target=/run/secrets/API_TOKEN \
+RUN --mount=type=secret,id=API_TOKEN,env=API_TOKEN \
     export API_TOKEN=$(cat /run/secrets/API_TOKEN) && \
     echo $API_TOKEN
 

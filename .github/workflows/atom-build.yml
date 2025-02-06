@@ -38,4 +38,6 @@ jobs:
           # cache-from: type=registry,ref=your-dockerhub-username/atom:cache
           # cache-to: type=inline
           secrets: |
-            API_TOKEN=${{ secrets.API_TOKEN }}
+            "API_TOKEN=${{ secrets.API_TOKEN }}"
+          secret-envs: |
+            "API_TOKEN=API_TOKEN"
