@@ -1,4 +1,4 @@
-ARG GITHUB_API_TOKEN
+ARG API_TOKEN
 FROM php:7.4-fpm-alpine
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
@@ -61,6 +61,8 @@ RUN set -xe \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY composer.* /atom/build/
+
+RUN set -xe && composer config -g github-oauth.github.com $API_TOKEN
 
 RUN set -xe && composer install -d /atom/build
 
