@@ -1,5 +1,5 @@
 FROM php:7.4-fpm-alpine
-RUN --mount=type=secret,id=api_token,env=API_TOKEN
+RUN --mount=type=secret,id=API_TOKEN,env=API_TOKEN
 RUN echo $API_TOKEN
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
