@@ -39,7 +39,12 @@ class OidcLoginAction extends sfAction
                 $this->context->user->validateProviderId($providerId, true);
             }
 
-            $this->context->user->authenticate();
+            $result = $this->context->user->authenticate();
+            if (false == $result) {
+                $this->context->user->logout(false);
+
+                $this->redirect('admin/secure');
+            }
         }
 
         // Redirect to module/action the user was trying to reach before being redirected
