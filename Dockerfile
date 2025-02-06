@@ -64,8 +64,6 @@ COPY composer.* /atom/build/
 RUN --mount=type=secret,id=api_token,env=API_TOKEN \
     composer config -g github-oauth.github.com ${API_TOKEN} \
     && composer install -d /atom/build
-# RUN set -xe && composer config -g github-oauth.github.com $API_TOKEN
-# RUN set -xe && composer install -d /atom/build
 
 COPY package* /atom/build/
 
