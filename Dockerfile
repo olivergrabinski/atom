@@ -1,3 +1,4 @@
+ARG GITHUB_API_TOKEN
 FROM php:7.4-fpm-alpine
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
