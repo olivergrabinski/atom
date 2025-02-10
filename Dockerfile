@@ -4,13 +4,6 @@ ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
-RUN apk add --no-cache bash \
-    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash \
-    && nvm install 18 \
-    && node -v \
-    && nvm current \
-    && npm -v
-
 RUN set -xe \
     && apk add --no-cache --virtual .phpext-builddeps \
       gettext-dev \
@@ -58,8 +51,8 @@ RUN set -xe \
       bash \
       gnu-libiconv \
       fcgi \
-      nodejs \
-    # && npm install -g npm@8.19.4 \
+      npm \
+    && npm install -g npm@8.19.4 \
     && npm install -g "less@<4.0.0" \
     && curl -Ls https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.1-bin.tar.gz | tar xz -C /usr/share \
     && ln -sf /usr/share/fop-2.1/fop /usr/local/bin/fop \
