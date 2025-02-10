@@ -67,7 +67,7 @@ RUN --mount=type=secret,id=api_token,env=API_TOKEN \
 
 COPY package* /atom/build/
 
-RUN set -xe && npm install --prefix /atom/build
+RUN set -xe && npm ci --prefix /atom/build
 
 COPY . /atom/src
 
