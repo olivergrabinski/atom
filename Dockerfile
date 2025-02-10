@@ -52,6 +52,7 @@ RUN set -xe \
       gnu-libiconv \
       fcgi \
       npm \
+    && npm uninstall -g npm \
     && npm install -g npm@8.19.4 \
     && npm install -g "less@<4.0.0" \
     && curl -Ls https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.1-bin.tar.gz | tar xz -C /usr/share \
