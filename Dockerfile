@@ -1,4 +1,4 @@
-ARG NODE_VERSION=18.16.0
+ARG NODE_VERSION=18.20.6
 
 FROM node:${NODE_VERSION}-alpine AS node
 FROM olivergra/php:latest
