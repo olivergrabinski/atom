@@ -4,9 +4,6 @@ ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
-RUN apk add --no-cache curl \
-    && curl -fsSL https://nodejs.org/dist/latest-v20.x/node-v20.9.0-linux-x64.tar.xz | tar -xJ -C /usr/local --strip-components=1
-
 RUN set -xe \
     && apk add --no-cache --virtual .phpext-builddeps \
       gettext-dev \
@@ -55,7 +52,7 @@ RUN set -xe \
       bash \
       gnu-libiconv \
       fcgi \
-    && npm install -g npm@latest \
+    && npm install -g npm@8.19.4 \
     && npm install -g "less@<4.0.0" \
     && curl -Ls https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.1-bin.tar.gz | tar xz -C /usr/share \
     && ln -sf /usr/share/fop-2.1/fop /usr/local/bin/fop \
