@@ -47,7 +47,6 @@ RUN set -xe \
       imagemagick \
       ghostscript \
       poppler-utils \
-      npm \
       make \
       bash \
       gnu-libiconv \
