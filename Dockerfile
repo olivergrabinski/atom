@@ -4,9 +4,8 @@ ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
-RUN apk update \
-    && apk add --no-cache nodejs \
-    && apk upgrade nodejs
+RUN apk add --no-cache curl \
+    && curl -fsSL https://nodejs.org/dist/latest-v20.x/node-v20.9.0-linux-x64.tar.xz | tar -xJ -C /usr/local --strip-components=1
 
 RUN set -xe \
     && apk add --no-cache --virtual .phpext-builddeps \
