@@ -1,4 +1,12 @@
+ARG NODE_VERSION=18.16.0
+
+FROM node:${NODE_VERSION}-alpine AS node
 FROM olivergra/php:latest
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
@@ -51,9 +59,6 @@ RUN set -xe \
       bash \
       gnu-libiconv \
       fcgi \
-      npm \
-    && npm uninstall -g npm \
-    && npm install -g npm@8.19.4 \
     && npm install -g "less@<4.0.0" \
     && curl -Ls https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.1-bin.tar.gz | tar xz -C /usr/share \
     && ln -sf /usr/share/fop-2.1/fop /usr/local/bin/fop \
