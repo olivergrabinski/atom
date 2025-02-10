@@ -4,7 +4,7 @@ ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
-RUN apk update
+RUN apk update \
     && apk add --no-cache nodejs \
     && apk upgrade nodejs
 
