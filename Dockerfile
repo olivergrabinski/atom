@@ -61,7 +61,7 @@ RUN set -xe \
       fcgi \
     && npm install -g "less@<4.0.0" \
     && curl -Ls https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.9-bin.tar.gz | tar xz -C /usr/share \
-    && ln -sf /usr/share/fop-2.1/fop /usr/local/bin/fop \
+    && ln -sf /usr/share/fop-2.9/fop /usr/local/bin/fop \
     && echo "extension=ldap.so" > /usr/local/etc/php/conf.d/docker-php-ext-ldap.ini
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
