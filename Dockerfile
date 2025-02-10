@@ -1,4 +1,4 @@
-FROM olivergra:php
+FROM olivergra/php:latest
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
