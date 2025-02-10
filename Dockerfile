@@ -4,7 +4,7 @@ ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
     LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" \
     && . "$NVM_DIR/nvm.sh" \
     && nvm install 20
