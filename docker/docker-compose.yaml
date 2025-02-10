@@ -8,7 +8,7 @@ volumes:
 services:
 
   atom:
-    image: olivergrabinski/atom
+    image: olivergra/atom
     env_file: etc/environment
     environment:
       - ATOM_COVERAGE=${ATOM_COVERAGE:-false}
@@ -18,7 +18,7 @@ services:
       - ..:/atom/src:rw
 
   atom_worker:
-    image: olivergrabinski/atom
+    image: olivergra/atom
     command: worker
     env_file: etc/environment
     environment:
@@ -43,7 +43,7 @@ services:
       - "63001:80"
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.23
+    image: blacktop/elasticsearch:6.8.23
     env_file: etc/environment
     ulimits:
       memlock:
@@ -55,11 +55,12 @@ services:
       - "127.0.0.1:63002:9200"
 
   percona:
-    image: percona:8.0
+    image: mysql:8
     env_file: etc/environment
     volumes:
       - percona_data:/var/lib/mysql:rw
-      - ./etc/mysql/mysqld.cnf:/etc/my.cnf.d/mysqld.cnf:ro
+      # - ./etc/mysql/mysqld.cnf:/etc/my.cnf.d/mysqld.cnf:ro
+      - ./etc/mysql/mysqld.cnf:/etc/mysql/my.cnf:ro
     ports:
       - "127.0.0.1:63003:3306"
 
@@ -71,5 +72,6 @@ services:
 
   gearmand:
     image: artefactual/gearmand
+    platform: linux/amd64
     ports:
       - "127.0.0.1:63005:4730"
