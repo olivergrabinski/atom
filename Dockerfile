@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM olivergra:php
 
 ENV FOP_HOME=/usr/share/fop-2.1 \
     COMPOSER_ALLOW_SUPERUSER=1 \
