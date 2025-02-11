@@ -10,7 +10,7 @@ jobs:
         browser: [Chrome, Electron, Firefox]
     name: ${{ matrix.browser }}
     env:
-      COMPOSE_FILE: ${{ github.workspace }}/docker/docker-compose.dev.yml
+      COMPOSE_FILE: ${{ github.workspace }}/docker/docker-compose.yaml
     steps:
     - name: Check out code
       uses: actions/checkout@v3
